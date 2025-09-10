@@ -1,9 +1,6 @@
 <?php
 defined('ABSPATH') || exit;
 
-/**
- * Register the Testimonials custom post type.
- */
 function tcpt_register_post_type(){
 	$labels = array(
 		'name'				  => _x('Testimonials', 'Post type general name', TCPT_TEXTDOMAIN),
@@ -17,7 +14,6 @@ function tcpt_register_post_type(){
 		'view_item'			 => __('View Testimonial', TCPT_TEXTDOMAIN),
 		'all_items'			 => __('All Testimonials', TCPT_TEXTDOMAIN),
 		'search_items'		  => __('Search Testimonials', TCPT_TEXTDOMAIN),
-		'parent_item_colon'	 => __('Parent Testimonials:', TCPT_TEXTDOMAIN),
 		'not_found'			 => __('No testimonials found.', TCPT_TEXTDOMAIN),
 		'not_found_in_trash'	=> __('No testimonials found in Trash.', TCPT_TEXTDOMAIN),
 		'featured_image'		=> _x('Featured Image', 'testimonial', TCPT_TEXTDOMAIN),
@@ -25,11 +21,6 @@ function tcpt_register_post_type(){
 		'remove_featured_image' => _x('Remove featured image', 'testimonial', TCPT_TEXTDOMAIN),
 		'use_featured_image'	=> _x('Use as featured image', 'testimonial', TCPT_TEXTDOMAIN),
 		'archives'			  => _x('Testimonial archives', 'testimonial', TCPT_TEXTDOMAIN),
-		'insert_into_item'	  => _x('Insert into testimonial', 'testimonial', TCPT_TEXTDOMAIN),
-		'uploaded_to_this_item' => _x('Uploaded to this testimonial', 'testimonial', TCPT_TEXTDOMAIN),
-		'filter_items_list'	 => _x('Filter testimonials list', 'testimonial', TCPT_TEXTDOMAIN),
-		'items_list_navigation' => _x('Testimonials list navigation', 'testimonial', TCPT_TEXTDOMAIN),
-		'items_list'			=> _x('Testimonials list', 'testimonial', TCPT_TEXTDOMAIN),
 	);
 
 	$args = array(
@@ -41,7 +32,7 @@ function tcpt_register_post_type(){
 		'show_in_rest'	   => true,
 		'query_var'		  => true,
 		'rewrite'			=> array('slug' => TCPT_SLUG, 'with_front' => false),
-		'capability_type'	=> 'post', // same as posts
+		'capability_type'	=> 'post',
 		'map_meta_cap'	   => true,
 		'has_archive'		=> true,
 		'hierarchical'	   => false,

@@ -1,9 +1,6 @@
 <?php
 defined('ABSPATH') || exit;
 
-/**
- * Render rating stars (0-5)
- */
 function tcpt_render_stars($rating){
 	$rating = (int) $rating;
 	$rating = max(0, min(5, $rating));

@@ -1,11 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-/**
- * Register Testimonial Categories (hierarchical) and Tags (non-hierarchical).
- */
 function tcpt_register_taxonomies(){
-	// Categories
 	$cat_labels = array(
 		'name'			  => _x('Testimonial Categories', 'taxonomy general name', TCPT_TEXTDOMAIN),
 		'singular_name'	 => _x('Testimonial Category', 'taxonomy singular name', TCPT_TEXTDOMAIN),
@@ -33,10 +29,9 @@ function tcpt_register_taxonomies(){
 		)
 	);
 
-	// Tags
 	$tag_labels = array(
 		'name'			  => _x('Testimonial Tags', 'taxonomy general name', TCPT_TEXTDOMAIN),
-		'singular_name'	 => _x('Testimonial Tag', 'taxonomy singular name', TCPT_TEXTDOMAIN),
+		'singular_name'	 => _x('Testimonial Tag', TCPT_TEXTDOMAIN),
 		'search_items'	  => __('Search Tags', TCPT_TEXTDOMAIN),
 		'all_items'		 => __('All Tags', TCPT_TEXTDOMAIN),
 		'edit_item'		 => __('Edit Tag', TCPT_TEXTDOMAIN),

@@ -1,10 +1,6 @@
 <?php
 defined('ABSPATH') || exit;
 
-/**
- * Output JSON-LD Review schema on single testimonial.
- * Filter: add_filter('tcpt_schema_enabled', '__return_false') to disable.
- */
 add_action('wp_head', function(){
 	if (!is_singular(TCPT_SLUG)) return;
 	$enabled = apply_filters('tcpt_schema_enabled', true);
@@ -23,26 +19,12 @@ add_action('wp_head', function(){
 		'@type'	   => 'Review',
 		'name'		=> get_the_title($post_id),
 		'reviewBody'  => wp_strip_all_tags(get_the_content(null, false, $post_id)),
-		'author'	  => array(
-			'@type' => 'Person',
-			'name'  => $name ? $name : __('Anonymous', TCPT_TEXTDOMAIN),
-		),
-		'reviewRating' => array(
-			'@type'	   => 'Rating',
-			'ratingValue' => (int) $rating,
-			'bestRating'  => 5,
-		),
+		'author'	  => array('@type' => 'Person','name'  => $name ? $name : __('Anonymous', TCPT_TEXTDOMAIN)),
+		'reviewRating' => array('@type' => 'Rating','ratingValue' => (int) $rating,'bestRating'  => 5),
 	);
-
 	if ($source){
-		$data['publisher'] = array(
-			'@type' => 'Organization',
-			'name'  => $source,
-		);
-		if ($url){
-			$data['publisher']['url'] = esc_url($url);
-		}
+		$data['publisher'] = array('@type' => 'Organization','name'  => $source);
+		if ($url){ $data['publisher']['url'] = esc_url($url); }
 	}
-
 	echo '<script type="application/ld+json">' . wp_json_encode($data) . '</script>';
 }, 99);

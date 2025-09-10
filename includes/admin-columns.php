@@ -2,7 +2,6 @@
 defined('ABSPATH') || exit;
 
 add_filter('manage_edit-' . TCPT_SLUG . '_columns', function($columns){
-	// Insert custom columns after title
 	$new = array();
 	foreach ($columns as $key => $label){
 		$new[$key] = $label;
